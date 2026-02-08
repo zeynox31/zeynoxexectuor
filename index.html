@@ -96,8 +96,6 @@
         .feature-card h3 { color: var(--primary); margin-bottom: 15px; font-size: 24px; }
         .feature-card p { color: #888; line-height: 1.7; }
 
-        /* Help Section Stilleri */
-        .help-container { width: 100%; max-width: 900px; text-align: left; }
         .faq-item { background: var(--card); border: 1px solid var(--border); padding: 25px; border-radius: 20px; margin-bottom: 15px; }
         .faq-item h4 { color: var(--primary); margin-bottom: 10px; font-size: 18px; }
         .faq-item p { color: #aaa; font-size: 15px; line-height: 1.6; }
@@ -110,6 +108,10 @@
         .online-indicator { width: 10px; height: 10px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 15px var(--primary); animation: pulse 2s infinite; }
         @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.4; } 100% { transform: scale(1); opacity: 1; } }
 
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
     </style>
 </head>
 <body>
@@ -171,18 +173,14 @@
 
     <section id="help">
         <h2 style="font-size: 50px; margin-bottom: 40px; letter-spacing: -2px;">Support & FAQ</h2>
-        <div class="help-container">
+        <div style="width: 100%; max-width: 900px; text-align: left;">
             <div class="faq-item">
                 <h4>How do I use Zeynox?</h4>
                 <p>Download the installer, run the application, and attach it to your game process. Then, simply paste your script and hit execute.</p>
             </div>
             <div class="faq-item">
                 <h4>Is it really keyless?</h4>
-                <p>Yes. Zeynox is 100% keyless. We don't use any linkvertise or third-party key systems. Just download and play.</p>
-            </div>
-            <div class="faq-item">
-                <h4>My antivirus flags it as a virus?</h4>
-                <p>This is a "False Positive". Since executors inject code into other processes, antiviruses flag them. Disable your real-time protection before downloading.</p>
+                <p>Yes. Zeynox is 100% keyless. We don't use any third-party key systems. Just download and play.</p>
             </div>
         </div>
     </section>
@@ -194,70 +192,60 @@
         </div>
     </section>
 
-    <section id="download" style="background: linear-gradient(to top, #0a1a12, transparent);">
+    <section id="download">
         <h2 style="font-size: 60px; margin-bottom: 20px;">Get Zeynox</h2>
         <p style="color: #666; margin-bottom: 40px;">No keys. No ads. Just pure power.</p>
         <a href="#" class="dl-btn-ultimate" style="background: #fff; color: #000; box-shadow: 0 0 30px rgba(255,255,255,0.2);">DOWNLOAD V1.3.20</a>
     </section>
-<script>
-    const users = [
-        {name: "ShadowWalker_99", action: "Launched Zeynox V1.3.20", real: true},
-        {name: "xYasin_Pro", action: "Script executed successfully", real: false},
-        {name: "DiscordUser_44", action: "Joined the community", real: true},
-        {name: "LootMaster", action: "Downloaded Zeynox (Direct)", real: false},
-        {name: "AdminKiller", action: "New Script Hub loaded", real: true},
-        {name: "Ghost_Executor", action: "Bypass completed", real: true},
-        {name: "Viper_Dev", action: "Execution stable - 60 FPS", real: false},
-        {name: "NoobSlayer2026", action: "Script executed", real: true},
-        {name: "Eternal_Void", action: "Attached to process", real: true},
-        {name: "Cyborg_X", action: "Injected successfully", real: true},
-        {name: "Roxxer_9", action: "LootLabs link bypassed", real: false}
-    ];
 
-    function addActivity(isInitial = false) {
-        const list = document.getElementById('activity-list');
-        const user = users[Math.floor(Math.random() * users.length)];
-        
-        const item = document.createElement('div');
-        item.className = 'faq-item';
-        // Eğer ilk yükleme ise animasyon yapmasın ki göze batmasın
-        const anim = isInitial ? "" : "animation: slideIn 0.3s ease-out;";
-        item.style.cssText = `display: flex; align-items: center; gap: 15px; margin-bottom: 10px; padding: 15px; border-left: 2px solid var(--primary); background: rgba(10,10,10,0.8); ${anim}`;
-        
-        item.innerHTML = `
-            <div style="width: 40px; height: 40px; background: #111; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary); border: 1px solid var(--border); font-size: 12px;">
-                ${user.name.substring(0, 2).toUpperCase()}
-            </div>
-            <div style="flex: 1;">
-                <h4 style="font-size: 14px; margin: 0; color: #fff;">${user.name} ${user.real ? '<small style="color:var(--primary); font-size:9px; background: rgba(0,255,150,0.1); padding: 2px 5px; border-radius: 4px; margin-left: 5px; vertical-align: middle;">VERIFIED</small>' : ''}</h4>
-                <p style="font-size: 12px; margin: 0; color: #666;">${user.action}</p>
-            </div>
-            <span style="font-size: 10px; color: #333; font-weight: 800;">JUST NOW</span>
-        `;
+    <section id="activity" style="min-height: auto; padding: 50px 10%;">
+        <div style="max-width: 600px; margin: 0 auto; width: 100%;">
+            <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px; letter-spacing: -1px;">Live <span style="color: var(--primary);">Activity</span></h3>
+            <div id="activity-list">
+                </div>
+        </div>
+    </section>
 
-        list.insertBefore(item, list.firstChild);
-        if (list.children.length > 5) {
-            list.removeChild(list.lastChild);
+    <script>
+        const users = [
+            {name: "ShadowWalker_99", action: "Launched Zeynox V1.3.20", real: true},
+            {name: "xYasin_Pro", action: "Script executed successfully", real: false},
+            {name: "DiscordUser_44", action: "Joined the community", real: true},
+            {name: "LootMaster", action: "Downloaded Zeynox (Direct)", real: false},
+            {name: "AdminKiller", action: "New Script Hub loaded", real: true},
+            {name: "Ghost_Executor", action: "Bypass completed", real: true},
+            {name: "Viper_Dev", action: "Execution stable - 60 FPS", real: false},
+            {name: "NoobSlayer2026", action: "Script executed", real: true},
+            {name: "Eternal_Void", action: "Attached to process", real: true}
+        ];
+
+        function addActivity(isInitial = false) {
+            const list = document.getElementById('activity-list');
+            if(!list) return;
+            const user = users[Math.floor(Math.random() * users.length)];
+            const item = document.createElement('div');
+            item.className = 'faq-item';
+            const anim = isInitial ? "" : "animation: slideIn 0.3s ease-out;";
+            item.style.cssText = `display: flex; align-items: center; gap: 15px; margin-bottom: 10px; padding: 15px; border-left: 2px solid var(--primary); background: rgba(10,10,10,0.8); ${anim}`;
+            
+            item.innerHTML = `
+                <div style="width: 40px; height: 40px; background: #111; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary); border: 1px solid var(--border); font-size: 12px;">
+                    ${user.name.substring(0, 2).toUpperCase()}
+                </div>
+                <div style="flex: 1;">
+                    <h4 style="font-size: 14px; margin: 0; color: #fff;">${user.name} ${user.real ? '<small style="color:var(--primary); font-size:9px; background: rgba(0,255,150,0.1); padding: 2px 5px; border-radius: 4px; margin-left: 5px; vertical-align: middle;">VERIFIED</small>' : ''}</h4>
+                    <p style="font-size: 12px; margin: 0; color: #666;">${user.action}</p>
+                </div>
+                <span style="font-size: 10px; color: #333; font-weight: 800;">JUST NOW</span>
+            `;
+            list.insertBefore(item, list.firstChild);
+            if (list.children.length > 5) list.removeChild(list.lastChild);
         }
-    }
 
-    // --- KRİTİK NOKTA: SAYFA AÇILDIĞINDA LİSTEYİ DOLDUR ---
-    // Sayfa açılır açmaz 5 tane kullanıcıyı patır patır ekle
-    for(let i=0; i<5; i++) {
-        addActivity(true);
-    }
-
-    // Sonra her 3 saniyede bir normal akışa devam et
-    setInterval(() => addActivity(false), 3000);
-
-    const style = document.createElement('style');
-    style.innerHTML = `
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-    `;
-    document.head.appendChild(style);
-</script>
+        window.onload = function() {
+            for(let i=0; i<5; i++) addActivity(true);
+            setInterval(() => addActivity(false), 3000);
+        };
+    </script>
 </body>
 </html>
