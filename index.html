@@ -18,7 +18,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
         body { background-color: var(--bg); color: #fff; overflow-x: hidden; }
 
-        /* Arkaplan ve Grid */
         .bg-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 50% 50%, #0a1a12 0%, #030303 100%); }
         .blob { position: absolute; width: 500px; height: 500px; background: var(--primary); filter: blur(180px); border-radius: 50%; opacity: 0.1; animation: move 20s infinite alternate; }
         @keyframes move { from { transform: translate(-10%, -10%); } to { transform: translate(20%, 20%); } }
@@ -33,27 +32,26 @@
 
         section { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 100px 10%; }
         
-        /* Glass Card */
-        .glass-card { background: var(--card); border: 1px solid var(--border); border-radius: 40px; backdrop-filter: blur(30px); position: relative; transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .glass-card { background: var(--card); border: 1px solid var(--border); border-radius: 40px; backdrop-filter: blur(30px); position: relative; transition: 0.5s; }
+        
+        /* Features */
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; margin-top: 50px; }
+        .feature-card { background: var(--card); border: 1px solid var(--border); padding: 40px; border-radius: 25px; transition: 0.3s; }
+        .feature-card h3 { color: var(--primary); margin-bottom: 15px; font-size: 24px; }
+        .feature-card p { color: #888; line-height: 1.7; }
 
-        /* WEB EXECUTOR UI */
-        .web-executor-container { width: 100%; max-width: 900px; background: #080808; border: 1px solid var(--border); border-radius: 15px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+        /* Web Executor Styling */
+        .web-executor-container { width: 100%; max-width: 900px; background: #080808; border: 1px solid var(--border); border-radius: 15px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.5); margin-top: 40px; }
         .executor-header { background: #111; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
-        .executor-tabs { display: flex; gap: 10px; }
-        .tab { font-size: 12px; color: #666; background: #181818; padding: 5px 15px; border-radius: 5px; cursor: pointer; }
-        .tab.active { color: var(--primary); border: 1px solid var(--primary-glow); }
-        .editor-area { width: 100%; height: 350px; background: transparent; border: none; padding: 20px; color: var(--primary); font-family: 'Fira Code', monospace; font-size: 14px; outline: none; resize: none; }
+        .editor-area { width: 100%; height: 300px; background: transparent; border: none; padding: 20px; color: var(--primary); font-family: 'Fira Code', monospace; font-size: 14px; outline: none; resize: none; }
         .executor-footer { background: #111; padding: 15px 20px; display: flex; gap: 10px; border-top: 1px solid var(--border); }
-        .exec-btn { padding: 10px 25px; border-radius: 8px; border: none; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 13px; }
+        .exec-btn { padding: 10px 25px; border-radius: 8px; border: none; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-main { background: var(--primary); color: #000; }
-        .btn-main:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--primary-glow); }
-        .btn-sec { background: #181818; color: #eee; }
-        .btn-sec:hover { background: #222; }
-
-        /* General Styles */
+        
         .dl-btn-ultimate { background: var(--primary); color: #000; padding: 22px 60px; border-radius: 18px; font-weight: 800; font-size: 20px; text-decoration: none; box-shadow: 0 0 40px var(--primary-glow); transition: 0.4s; }
         .faq-item { background: var(--card); border: 1px solid var(--border); padding: 25px; border-radius: 20px; margin-bottom: 15px; width: 100%; }
 
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
     </style>
 </head>
 <body>
@@ -67,60 +65,57 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#help">Help</a></li>
-                <li><a href="#executor">Web Executor</a></li>
+                <li><a href="#web-exec">Web Exec</a></li>
                 <li><a href="#download">Download</a></li>
             </ul>
         </nav>
-        <a href="#" class="btn-discord" style="padding: 12px 25px; background: #fff; color: #000; border-radius: 12px; font-weight: 700; text-decoration: none;">Join Discord</a>
+        <a href="#" style="padding: 12px 25px; background: #fff; color: #000; border-radius: 12px; font-weight: 700; text-decoration: none;">Discord</a>
     </header>
 
     <section id="home">
         <h1 style="font-size: clamp(45px, 8vw, 85px); font-weight: 800; letter-spacing: -4px; text-align:center;">Experience Power</h1>
         <div class="glass-card" style="padding: 80px; text-align: center; margin-top: 40px;">
             <h2 style="font-size: 60px; letter-spacing: -4px; margin-bottom: 5px;">ZEY<span>NOX</span></h2>
-            <p style="text-transform: uppercase; letter-spacing: 5px; color: #444; font-weight: 800; font-size: 12px; margin-bottom: 30px;">Premium Web-Linked Engine</p>
-            <a href="#download" class="dl-btn-ultimate">GET STARTED</a>
+            <p style="text-transform: uppercase; letter-spacing: 5px; color: #444; font-weight: 800; font-size: 12px; margin-bottom: 30px;">Premium Execution Engine</p>
+            <a href="#download" class="dl-btn-ultimate">DOWNLOAD NOW</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="features">
+            <div class="feature-card"><h3>Lightning Fast</h3><p>Custom bytecode transpiler for maximum performance.</p></div>
+            <div class="feature-card"><h3>Undetected</h3><p>Kernel-level bypass keeping you safe 24/7.</p></div>
+            <div class="feature-card"><h3>Global Hub</h3><p>Access thousands of scripts with one click.</p></div>
         </div>
     </section>
 
     <section id="help">
         <h2 style="font-size: 50px; margin-bottom: 40px;">Support & FAQ</h2>
         <div style="max-width: 900px; width: 100%;">
-            <div class="faq-item">
-                <h4 style="color: var(--primary);">How do I use the Web Executor?</h4>
-                <p style="color: #888; margin-top: 10px;">First, run the Zeynox Desktop app. Once attached, you can use this website to execute scripts remotely from any browser.</p>
-            </div>
-            <div class="faq-item">
-                <h4 style="color: var(--primary);">Is it safe?</h4>
-                <p style="color: #888; margin-top: 10px;">Yes, Zeynox uses end-to-end encryption for web-to-desktop communication.</p>
-            </div>
+            <div class="faq-item"><h4>How to use?</h4><p style="color: #888;">Download, attach, and execute. It's that simple.</p></div>
+            <div class="faq-item"><h4>Is it keyless?</h4><p style="color: #888;">Yes, 100% keyless experience.</p></div>
         </div>
     </section>
 
-    <section id="executor">
+    <section id="web-exec">
         <h2 style="font-size: 50px; margin-bottom: 10px;">Web <span style="color: var(--primary);">Executor</span></h2>
-        <p style="color: #666; margin-bottom: 40px;">Execute scripts directly from your dashboard.</p>
-        
+        <p style="color: #666;">Control your game directly from this browser tab.</p>
         <div class="web-executor-container">
             <div class="executor-header">
-                <div class="executor-tabs">
-                    <div class="tab active">main.lua</div>
-                    <div class="tab">+</div>
-                </div>
-                <div style="font-size: 11px; color: #444; font-weight: 700;">STATUS: <span id="exec-status" style="color: #ff4444;">DISCONNECTED</span></div>
+                <div style="font-size: 12px; color: var(--primary);">script.lua</div>
+                <div style="font-size: 10px; color: #444;">STATUS: <span style="color: #ff4444;">OFFLINE</span></div>
             </div>
-            <textarea class="editor-area" id="script-input" spellcheck="false">-- Zeynox Web Executor v1.3.20
-print("Hello from Zeynox Web!")
-            </textarea>
+            <textarea class="editor-area" id="web-editor">-- Paste your script here
+print("Zeynox Web Link Active")</textarea>
             <div class="executor-footer">
-                <button class="exec-btn btn-main" onclick="executeScript()">Execute</button>
-                <button class="exec-btn btn-sec" onclick="document.getElementById('script-input').value = ''">Clear</button>
+                <button class="exec-btn btn-main" onclick="alert('Zeynox Desktop not found!')">Execute</button>
+                <button class="exec-btn" style="background:#181818; color:#fff;" onclick="document.getElementById('web-editor').value=''">Clear</button>
             </div>
         </div>
     </section>
 
     <section id="download">
-        <h2 style="font-size: 60px; margin-bottom: 20px;">Download</h2>
+        <h2 style="font-size: 60px; margin-bottom: 20px;">Get Zeynox</h2>
         <a href="#" class="dl-btn-ultimate" style="background: #fff; color: #000;">DOWNLOAD V1.3.20</a>
     </section>
 
@@ -132,42 +127,24 @@ print("Hello from Zeynox Web!")
     </section>
 
     <script>
-        // Web Executor Fonksiyonu
-        function executeScript() {
-            const script = document.getElementById('script-input').value;
-            const status = document.getElementById('exec-status');
-            
-            // Burası ileride Desktop uygulamasıyla haberleşecek kısım
-            alert("Execution sent! (Ensure Zeynox Desktop is running)");
-            console.log("Executing:", script);
-        }
-
-        // Live Activity Logic
         const users = [
-            {name: "ShadowWalker_99", action: "Executed Admin Script", real: true},
-            {name: "Viper_Dev", action: "Attached to Roblox", real: true},
-            {name: "Ghost_User", action: "Launched Web Panel", real: false}
+            {name: "Shadow_X", action: "Executed script", real: true},
+            {name: "Viper_Dev", action: "Attached Zeynox", real: true},
+            {name: "Loot_Master", action: "Joined Discord", real: false}
         ];
-
-        function addActivity(isInitial = false) {
+        function addActivity(init = false) {
             const list = document.getElementById('activity-list');
-            if(!list) return;
-            const user = users[Math.floor(Math.random() * users.length)];
-            const item = document.createElement('div');
-            item.className = 'faq-item';
-            item.style.cssText = `display: flex; align-items: center; gap: 15px; margin-bottom: 10px; padding: 15px; border-left: 2px solid var(--primary); background: rgba(10,10,10,0.8); ${isInitial ? '' : 'animation: slideIn 0.3s ease-out;'}`;
-            item.innerHTML = `
-                <div style="width: 35px; height: 35px; background: #111; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary); border: 1px solid var(--border); font-size: 10px;">${user.name.substring(0,2)}</div>
-                <div style="flex: 1;"><h4 style="font-size: 13px; margin: 0;">${user.name}</h4><p style="font-size: 11px; color: #666;">${user.action}</p></div>
-                <span style="font-size: 9px; color: #333; font-weight: 800;">JUST NOW</span>`;
-            list.insertBefore(item, list.firstChild);
-            if (list.children.length > 5) list.removeChild(list.lastChild);
+            const u = users[Math.floor(Math.random()*users.length)];
+            const div = document.createElement('div');
+            div.className = 'faq-item';
+            div.style.cssText = `display: flex; align-items: center; gap: 15px; padding: 15px; border-left: 2px solid var(--primary); ${init ? '' : 'animation: slideIn 0.3s;'}`;
+            div.innerHTML = `<div style="width:35px;height:35px;background:#111;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--primary);border:1px solid var(--border);">${u.name[0]}</div>
+                <div style="flex:1;"><h4 style="font-size:13px;margin:0;">${u.name}</h4><p style="font-size:11px;color:#666;">${u.action}</p></div>
+                <span style="font-size:9px;color:#333;">JUST NOW</span>`;
+            list.insertBefore(div, list.firstChild);
+            if(list.children.length > 5) list.removeChild(list.lastChild);
         }
-
-        window.onload = () => {
-            for(let i=0; i<5; i++) addActivity(true);
-            setInterval(() => addActivity(false), 3000);
-        };
+        window.onload = () => { for(let i=0; i<5; i++) addActivity(true); setInterval(addActivity, 3000); };
     </script>
 </body>
 </html>
