@@ -199,6 +199,70 @@
         <p style="color: #666; margin-bottom: 40px;">No keys. No ads. Just pure power.</p>
         <a href="#" class="dl-btn-ultimate" style="background: #fff; color: #000; box-shadow: 0 0 30px rgba(255,255,255,0.2);">DOWNLOAD V1.3.20</a>
     </section>
+<section id="activity" style="min-height: auto; padding: 50px 10%;">
+    <div class="help-container" style="max-width: 600px; margin: 0 auto;">
+        <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px;">Canlı Aktivite</h3>
+        <div id="activity-list">
+            <div class="faq-item" style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px; padding: 15px; opacity: 0.9;">
+                <div style="width: 40px; height: 40px; background: #222; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary);">Z</div>
+                <div style="flex: 1;">
+                    <h4 style="font-size: 14px; margin: 0;">Zeynox Kullanıcısı</h4>
+                    <p style="font-size: 12px; margin: 0;">Zeynox'u başlattı.</p>
+                </div>
+                <span style="font-size: 11px; color: #444;">Az önce</span>
+            </div>
+        </div>
+    </div>
+</section>
 
+<script>
+    // Gerçekçi ve Sahte Kullanıcı Listesi
+    const users = [
+        {name: "Gansito Eduardo", action: "Zeynox'u kullandı.", real: true},
+        {name: "Kroxy_31", action: "Script execute etti.", real: false},
+        {name: "Vex_Executor", action: "Discord sunucusuna katıldı.", real: true},
+        {name: "XenoHunter", action: "Zeynox V1.3.20 başlattı.", real: false},
+        {name: "Mstf_Baba", action: "Yeni script hub açtı.", real: true},
+        {name: "GhostUser", action: "Zeynox'u indirdi.", real: false}
+    ];
+
+    function addActivity() {
+        const list = document.getElementById('activity-list');
+        const user = users[Math.floor(Math.random() * users.length)];
+        
+        const item = document.createElement('div');
+        item.className = 'faq-item';
+        item.style.cssText = "display: flex; align-items: center; gap: 15px; margin-bottom: 10px; padding: 15px; animation: slideIn 0.5s ease-out;";
+        
+        item.innerHTML = `
+            <div style="width: 40px; height: 40px; background: #111; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: ${user.real ? 'var(--primary)' : '#555'}; border: 1px solid var(--border);">
+                ${user.name.charAt(0)}
+            </div>
+            <div style="flex: 1;">
+                <h4 style="font-size: 14px; margin: 0;">${user.name} ${user.real ? '<small style="color:var(--primary); font-size:9px;">✔</small>' : ''}</h4>
+                <p style="font-size: 12px; margin: 0; color: #888;">${user.action}</p>
+            </div>
+            <span style="font-size: 11px; color: #444;">Az önce</span>
+        `;
+
+        list.insertBefore(item, list.firstChild);
+        if (list.children.length > 5) {
+            list.removeChild(list.lastChild);
+        }
+    }
+
+    // Her 4 saniyede bir yeni aktivite ekle
+    setInterval(addActivity, 4000);
+
+    // CSS Animasyonu ekle
+    const style = document.createElement('style');
+    style.innerHTML = `
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    `;
+    document.head.appendChild(style);
+</script>
 </body>
 </html>
