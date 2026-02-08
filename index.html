@@ -199,50 +199,40 @@
         <p style="color: #666; margin-bottom: 40px;">No keys. No ads. Just pure power.</p>
         <a href="#" class="dl-btn-ultimate" style="background: #fff; color: #000; box-shadow: 0 0 30px rgba(255,255,255,0.2);">DOWNLOAD V1.3.20</a>
     </section>
-<section id="activity" style="min-height: auto; padding: 50px 10%;">
-    <div class="help-container" style="max-width: 600px; margin: 0 auto;">
-        <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px;">Canlı Aktivite</h3>
-        <div id="activity-list">
-            <div class="faq-item" style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px; padding: 15px; opacity: 0.9;">
-                <div style="width: 40px; height: 40px; background: #222; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary);">Z</div>
-                <div style="flex: 1;">
-                    <h4 style="font-size: 14px; margin: 0;">Zeynox Kullanıcısı</h4>
-                    <p style="font-size: 12px; margin: 0;">Zeynox'u başlattı.</p>
-                </div>
-                <span style="font-size: 11px; color: #444;">Az önce</span>
-            </div>
-        </div>
-    </div>
-</section>
-
 <script>
-    // Gerçekçi ve Sahte Kullanıcı Listesi
     const users = [
-        {name: "Gansito Eduardo", action: "Zeynox'u kullandı.", real: true},
-        {name: "Kroxy_31", action: "Script execute etti.", real: false},
-        {name: "Vex_Executor", action: "Discord sunucusuna katıldı.", real: true},
-        {name: "XenoHunter", action: "Zeynox V1.3.20 başlattı.", real: false},
-        {name: "Mstf_Baba", action: "Yeni script hub açtı.", real: true},
-        {name: "GhostUser", action: "Zeynox'u indirdi.", real: false}
+        {name: "ShadowWalker_99", action: "Launched Zeynox V1.3.20", real: true},
+        {name: "xYasin_Pro", action: "Script executed successfully", real: false},
+        {name: "DiscordUser_44", action: "Joined the community", real: true},
+        {name: "LootMaster", action: "Downloaded Zeynox (Direct)", real: false},
+        {name: "AdminKiller", action: "New Script Hub loaded", real: true},
+        {name: "Ghost_Executor", action: "Bypass completed", real: true},
+        {name: "Viper_Dev", action: "Execution stable - 60 FPS", real: false},
+        {name: "NoobSlayer2026", action: "Script executed", real: true},
+        {name: "Eternal_Void", action: "Attached to process", real: true},
+        {name: "Cyborg_X", action: "Injected successfully", real: true},
+        {name: "Roxxer_9", action: "LootLabs link bypassed", real: false}
     ];
 
-    function addActivity() {
+    function addActivity(isInitial = false) {
         const list = document.getElementById('activity-list');
         const user = users[Math.floor(Math.random() * users.length)];
         
         const item = document.createElement('div');
         item.className = 'faq-item';
-        item.style.cssText = "display: flex; align-items: center; gap: 15px; margin-bottom: 10px; padding: 15px; animation: slideIn 0.5s ease-out;";
+        // Eğer ilk yükleme ise animasyon yapmasın ki göze batmasın
+        const anim = isInitial ? "" : "animation: slideIn 0.3s ease-out;";
+        item.style.cssText = `display: flex; align-items: center; gap: 15px; margin-bottom: 10px; padding: 15px; border-left: 2px solid var(--primary); background: rgba(10,10,10,0.8); ${anim}`;
         
         item.innerHTML = `
-            <div style="width: 40px; height: 40px; background: #111; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: ${user.real ? 'var(--primary)' : '#555'}; border: 1px solid var(--border);">
-                ${user.name.charAt(0)}
+            <div style="width: 40px; height: 40px; background: #111; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary); border: 1px solid var(--border); font-size: 12px;">
+                ${user.name.substring(0, 2).toUpperCase()}
             </div>
             <div style="flex: 1;">
-                <h4 style="font-size: 14px; margin: 0;">${user.name} ${user.real ? '<small style="color:var(--primary); font-size:9px;">✔</small>' : ''}</h4>
-                <p style="font-size: 12px; margin: 0; color: #888;">${user.action}</p>
+                <h4 style="font-size: 14px; margin: 0; color: #fff;">${user.name} ${user.real ? '<small style="color:var(--primary); font-size:9px; background: rgba(0,255,150,0.1); padding: 2px 5px; border-radius: 4px; margin-left: 5px; vertical-align: middle;">VERIFIED</small>' : ''}</h4>
+                <p style="font-size: 12px; margin: 0; color: #666;">${user.action}</p>
             </div>
-            <span style="font-size: 11px; color: #444;">Az önce</span>
+            <span style="font-size: 10px; color: #333; font-weight: 800;">JUST NOW</span>
         `;
 
         list.insertBefore(item, list.firstChild);
@@ -251,15 +241,20 @@
         }
     }
 
-    // Her 4 saniyede bir yeni aktivite ekle
-    setInterval(addActivity, 4000);
+    // --- KRİTİK NOKTA: SAYFA AÇILDIĞINDA LİSTEYİ DOLDUR ---
+    // Sayfa açılır açmaz 5 tane kullanıcıyı patır patır ekle
+    for(let i=0; i<5; i++) {
+        addActivity(true);
+    }
 
-    // CSS Animasyonu ekle
+    // Sonra her 3 saniyede bir normal akışa devam et
+    setInterval(() => addActivity(false), 3000);
+
     const style = document.createElement('style');
     style.innerHTML = `
         @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
     `;
     document.head.appendChild(style);
