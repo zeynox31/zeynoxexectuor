@@ -3,156 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zeynox - The Best Keyless Tool</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+    <title>Zeynox - The Ultimate Keyless Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* 1. CSS - TASARIM KISMI */
         :root {
             --accent: #00ff96;
             --bg: #000000;
-            --card: #0a0a0a;
-            --text-main: #ffffff;
-            --text-dim: #888888;
-            --nav-bg: rgba(0, 0, 0, 0.9);
+            --card-bg: #0a0a0a;
+            --text-gray: #888;
+            --nav-blur: rgba(0, 0, 0, 0.8);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
 
-        body { background-color: var(--bg); color: var(--text-main); line-height: 1.5; overflow-x: hidden; }
+        body { background-color: var(--bg); color: white; overflow-x: hidden; }
 
-        /* Arka Plan Grid Efekti (Xeno'nun meşhur çizgileri) */
-        .grid-bg {
+        /* Arka Plan Grid Efekti */
+        .background-grid {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
+            background-image: linear-gradient(rgba(0, 255, 150, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 150, 0.02) 1px, transparent 1px);
+            background-size: 45px 45px; z-index: -1;
         }
 
-        /* Navigasyon */
+        /* Navigasyon - Xeno Birebir */
         header {
-            position: fixed; top: 0; width: 100%; height: 80px;
+            position: fixed; top: 0; width: 100%; height: 75px;
             display: flex; align-items: center; justify-content: space-between;
-            padding: 0 10%; background: var(--nav-bg); backdrop-filter: blur(10px);
-            z-index: 100; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0 12%; background: var(--nav-blur); backdrop-filter: blur(15px);
+            z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
 
-        .logo { font-size: 24px; font-weight: 900; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
+        .logo { font-size: 24px; font-weight: 900; letter-spacing: -1.5px; text-decoration: none; color: white; }
         .logo span { color: var(--accent); }
 
         nav ul { display: flex; list-style: none; gap: 30px; }
-        nav ul li a { text-decoration: none; color: var(--text-dim); font-size: 14px; font-weight: 500; transition: 0.3s; }
-        nav ul li a:hover { color: var(--accent); }
+        nav ul li a { text-decoration: none; color: var(--text-gray); font-size: 14px; font-weight: 500; transition: 0.3s; }
+        nav ul li a:hover, nav ul li a.active { color: white; }
 
-        .btn-discord {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 10px 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);
-            text-decoration: none; color: white; font-size: 14px; font-weight: 600; transition: 0.3s;
+        .discord-btn {
+            background: rgba(255, 255, 255, 0.05); padding: 10px 22px; border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1); color: white; text-decoration: none; font-size: 14px; font-weight: 600; transition: 0.3s;
         }
-        .btn-discord:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--accent); }
+        .discord-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--accent); }
 
-        /* Hero Alanı */
-        .hero {
-            height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; padding: 0 20px;
+        /* Bölümler */
+        section { min-height: 100vh; padding: 120px 12% 80px 12%; display: flex; flex-direction: column; align-items: center; }
+
+        /* Hero / Home */
+        .hero { justify-content: center; text-align: center; background: radial-gradient(circle at center, #0a1410 0%, #000 70%); }
+        .hero h1 { font-size: clamp(35px, 7vw, 65px); font-weight: 800; margin-bottom: 20px; line-height: 1.1; letter-spacing: -2px; }
+        .hero p { color: var(--text-gray); font-size: 18px; max-width: 650px; margin-bottom: 50px; line-height: 1.6; }
+
+        .xeno-box {
+            background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 60px 100px; border-radius: 30px; position: relative;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8); transition: 0.4s;
         }
+        .xeno-box:hover { border-color: rgba(0, 255, 150, 0.2); transform: translateY(-5px); }
+        .xeno-box h2 { font-size: 55px; font-weight: 900; letter-spacing: -3px; }
+        .xeno-box h2 span { color: var(--accent); }
+        .status-pill { color: #555; font-size: 11px; letter-spacing: 3px; font-weight: 700; margin: 10px 0 35px 0; text-transform: uppercase; }
 
-        .hero h1 { font-size: clamp(40px, 8vw, 70px); font-weight: 800; margin-bottom: 20px; letter-spacing: -2px; }
-        .hero p { color: var(--text-dim); font-size: 18px; max-width: 700px; margin-bottom: 50px; }
-
-        /* Xeno Kartı */
-        .xeno-card {
-            background: var(--card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 60px 100px; border-radius: 24px;
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
-            position: relative; overflow: hidden;
-            transition: 0.5s ease;
+        .btn-primary {
+            background: var(--accent); color: black; padding: 16px 45px; border-radius: 12px;
+            font-weight: 800; text-decoration: none; font-size: 17px; transition: 0.3s;
+            display: inline-block; box-shadow: 0 10px 30px rgba(0, 255, 150, 0.2);
         }
-        .xeno-card:hover { border-color: var(--accent); transform: translateY(-10px); }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(0, 255, 150, 0.4); }
 
-        .xeno-card h2 { font-size: 55px; font-weight: 900; margin-bottom: 10px; }
-        .xeno-card h2 span { color: var(--accent); }
-        .xeno-card .status-sub { color: #555; font-size: 13px; letter-spacing: 2px; margin-bottom: 35px; text-transform: uppercase; }
+        /* About / Help / Info */
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; width: 100%; margin-top: 50px; }
+        .info-card { background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.03); }
+        .info-card h3 { font-size: 28px; margin-bottom: 20px; color: var(--accent); }
+        .info-card p { color: var(--text-gray); line-height: 1.7; font-size: 15px; }
 
-        .download-btn {
-            background: var(--accent); color: black;
-            padding: 16px 50px; border-radius: 12px; font-weight: 800;
-            text-decoration: none; font-size: 16px; transition: 0.3s;
-            display: inline-block; box-shadow: 0 0 30px rgba(0, 255, 150, 0.2);
-        }
-        .download-btn:hover { box-shadow: 0 0 50px rgba(0, 255, 150, 0.5); transform: scale(1.05); }
+        /* Status Dot */
+        .status-online { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 30px; font-size: 11px; color: #444; }
+        .dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); animation: blink 1.5s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-        /* Status Section */
-        .status-badge {
-            margin-top: 30px; display: flex; align-items: center; justify-content: center; gap: 8px;
-            color: #444; font-size: 12px; font-weight: 700;
-        }
-        .pulse-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse 1.5s infinite; }
-
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-
-        /* Bilgi Bölümü */
-        .info-section { padding: 100px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        .info-section h3 { font-size: 35px; margin-bottom: 20px; font-weight: 800; }
-        .info-section p { color: var(--text-dim); line-height: 1.8; margin-bottom: 30px; }
-        
-        .preview-box {
-            background: #050505; border: 1px solid rgba(255, 255, 255, 0.05);
-            height: 400px; border-radius: 20px; position: relative;
-            display: flex; align-items: center; justify-content: center; color: #222; font-weight: 900; font-size: 40px;
-        }
     </style>
 </head>
 <body>
 
-    <div class="grid-bg"></div>
+    <div class="background-grid"></div>
 
     <header>
-        <div class="logo">ZEY<span>NOX</span></div>
+        <a href="#home" class="logo">Zeynox</a>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#help">Help</a></li>
                 <li><a href="#executor">Executor</a></li>
                 <li><a href="#download">Download</a></li>
             </ul>
         </nav>
-        <a href="#" class="btn-discord">Join Discord</a>
+        <a href="#" class="discord-btn">Join Discord</a>
     </header>
 
-    <section class="hero">
+    <section id="home" class="hero">
         <h1>Experience the Best Keyless Tool</h1>
         <p>Zeynox provides lightning-fast execution, external script support, and a simple interface - all completely free and keyless.</p>
         
-        <div class="xeno-card">
+        <div class="xeno-box">
             <h2>ZEY<span>NOX</span></h2>
-            <p class="status-sub">Execution has never been this smooth</p>
-            <a href="#" class="download-btn">DOWNLOAD EXECUTOR</a>
-            <div class="status-badge">
-                <div class="pulse-dot"></div> V1.3.20 - STATUS: UNDETECTED
+            <p class="status-pill">Execution has never been this smooth</p>
+            <a href="#download" class="btn-primary">DOWNLOAD EXECUTOR</a>
+            <div class="status-online">
+                <div class="dot"></div> V1.3.20 - STATUS: UNDETECTED
             </div>
         </div>
     </section>
 
-    <section id="executor" class="info-section">
-        <div>
-            <h3>External Execution</h3>
-            <p>Execute scripts externally with the keyless interface. Zeynox ensures your gaming experience is uninterrupted, high-performing and safe from detections.</p>
-            <p>Our custom DLL allows for maximum compatibility with the most popular scripts in the market.</p>
-        </div>
-        <div class="preview-box">
-            UI PREVIEW
+    <section id="about">
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Lightning Fast</h3>
+                <p>Zeynox is optimized for speed. Our custom injection engine ensures that scripts load instantly without causing game lag or crashes.</p>
+            </div>
+            <div class="info-card">
+                <h3>Secure & Safe</h3>
+                <p>We prioritize your account's safety. Our tool is updated daily to bypass the latest anti-cheat systems, keeping your experience undetected.</p>
+            </div>
         </div>
     </section>
 
-    <script>
-        console.log("Zeynox Loaded Successfully.");
-        // İleride buraya indirme linki sayacı veya pop-up ekleyebiliriz.
-    </script>
+    <section id="help">
+        <h2 style="font-size: 45px; margin-bottom: 40px;">Frequently Asked Questions</h2>
+        <div class="info-card" style="width: 100%; max-width: 800px;">
+            <p style="color: white; font-weight: 700; margin-bottom: 10px;">Is Zeynox really free?</p>
+            <p style="margin-bottom: 25px;">Yes, Zeynox is 100% free to use. We don't require keys or hidden subscriptions.</p>
+            
+            <p style="color: white; font-weight: 700; margin-bottom: 10px;">Why is my antivirus flagging it?</p>
+            <p>Executors are often flagged as "False Positives" due to the way they interact with game memory. Simply whitelist the folder and you're good to go.</p>
+        </div>
+    </section>
+
+    <section id="executor">
+        <h2 style="font-size: 45px; margin-bottom: 20px;">External Execution</h2>
+        <p style="color: var(--text-gray); margin-bottom: 40px;">A sleek, modern UI designed for power users.</p>
+        <div style="width: 100%; max-width: 900px; height: 450px; background: #050505; border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #111; font-size: 40px;">
+            INTERFACE PREVIEW
+        </div>
+    </section>
+
+    <section id="download">
+        <h2 style="font-size: 45px; margin-bottom: 20px;">Get Started Today</h2>
+        <p style="color: var(--text-gray); margin-bottom: 40px;">Download Zeynox and elevate your gaming experience.</p>
+        <a href="#" class="btn-primary" style="background: white; color: black; padding: 20px 60px; font-size: 20px;">DOWNLOAD V1.3.20</a>
+    </section>
 
 </body>
 </html>
