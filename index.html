@@ -3,93 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zeynox - The Ultimate Keyless Tool</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>ZEYNOX | The Future of Execution</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --accent: #00ff96;
-            --bg: #000000;
-            --card-bg: #0a0a0a;
-            --text-gray: #888;
-            --nav-blur: rgba(0, 0, 0, 0.8);
+            --primary: #00ff96;
+            --primary-glow: rgba(0, 255, 150, 0.4);
+            --bg: #030303;
+            --card: rgba(15, 15, 15, 0.7);
+            --border: rgba(255, 255, 255, 0.08);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
 
-        body { background-color: var(--bg); color: white; overflow-x: hidden; }
+        body { background-color: var(--bg); color: #fff; overflow-x: hidden; }
 
-        /* Arka Plan Grid Efekti */
-        .background-grid {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(0, 255, 150, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 150, 0.02) 1px, transparent 1px);
-            background-size: 45px 45px; z-index: -1;
+        /* --- ARKA PLAN GELİŞTİRMELERİ --- */
+        .bg-wrapper {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #0a1a12 0%, #030303 100%);
         }
 
-        /* Navigasyon - Xeno Birebir */
+        /* Hareketli Neon Dalgaları */
+        .blob {
+            position: absolute; width: 500px; height: 500px;
+            background: var(--primary); filter: blur(180px);
+            border-radius: 50%; opacity: 0.1;
+            animation: move 20s infinite alternate;
+        }
+        @keyframes move {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(20%, 20%); }
+        }
+
+        /* Gelişmiş Izgara Sistemi */
+        .grid {
+            position: absolute; inset: 0;
+            background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 60px 60px; 
+
+[Image of geometric grid pattern]
+
+            mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+        }
+
+        /* --- NAVIGASYON --- */
         header {
-            position: fixed; top: 0; width: 100%; height: 75px;
+            position: fixed; top: 0; width: 100%; height: 85px;
             display: flex; align-items: center; justify-content: space-between;
-            padding: 0 12%; background: var(--nav-blur); backdrop-filter: blur(15px);
-            z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 0 10%; background: rgba(3, 3, 3, 0.7);
+            backdrop-filter: blur(20px); z-index: 1000;
+            border-bottom: 1px solid var(--border);
         }
 
-        .logo { font-size: 24px; font-weight: 900; letter-spacing: -1.5px; text-decoration: none; color: white; }
-        .logo span { color: var(--accent); }
+        .logo { font-size: 26px; font-weight: 800; letter-spacing: -1.5px; text-transform: uppercase; cursor: pointer; color: #fff; text-decoration: none; }
+        .logo span { color: var(--primary); text-shadow: 0 0 15px var(--primary-glow); }
 
-        nav ul { display: flex; list-style: none; gap: 30px; }
-        nav ul li a { text-decoration: none; color: var(--text-gray); font-size: 14px; font-weight: 500; transition: 0.3s; }
-        nav ul li a:hover, nav ul li a.active { color: white; }
+        nav ul { display: flex; list-style: none; gap: 35px; }
+        nav ul li a { text-decoration: none; color: #888; font-size: 14px; font-weight: 600; transition: 0.4s; letter-spacing: 0.5px; }
+        nav ul li a:hover { color: var(--primary); }
 
-        .discord-btn {
-            background: rgba(255, 255, 255, 0.05); padding: 10px 22px; border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1); color: white; text-decoration: none; font-size: 14px; font-weight: 600; transition: 0.3s;
+        .btn-discord {
+            padding: 12px 25px; background: #fff; color: #000;
+            border-radius: 12px; font-weight: 700; text-decoration: none;
+            font-size: 14px; transition: 0.3s;
         }
-        .discord-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--accent); }
+        .btn-discord:hover { background: var(--primary); transform: translateY(-2px); }
 
-        /* Bölümler */
-        section { min-height: 100vh; padding: 120px 12% 80px 12%; display: flex; flex-direction: column; align-items: center; }
+        /* --- HERO & MAIN CARD --- */
+        section { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 100px 10%; }
 
-        /* Hero / Home */
-        .hero { justify-content: center; text-align: center; background: radial-gradient(circle at center, #0a1410 0%, #000 70%); }
-        .hero h1 { font-size: clamp(35px, 7vw, 65px); font-weight: 800; margin-bottom: 20px; line-height: 1.1; letter-spacing: -2px; }
-        .hero p { color: var(--text-gray); font-size: 18px; max-width: 650px; margin-bottom: 50px; line-height: 1.6; }
+        .hero-text { text-align: center; margin-bottom: 60px; }
+        .hero-text h1 { font-size: clamp(45px, 8vw, 85px); font-weight: 800; letter-spacing: -4px; margin-bottom: 20px; }
+        .hero-text p { color: #666; font-size: 20px; max-width: 700px; margin: 0 auto; }
 
-        .xeno-box {
-            background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 60px 100px; border-radius: 30px; position: relative;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.8); transition: 0.4s;
+        .glass-card {
+            background: var(--card); border: 1px solid var(--border);
+            padding: 80px; border-radius: 40px; text-align: center;
+            backdrop-filter: blur(30px); position: relative;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.6);
+            transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-        .xeno-box:hover { border-color: rgba(0, 255, 150, 0.2); transform: translateY(-5px); }
-        .xeno-box h2 { font-size: 55px; font-weight: 900; letter-spacing: -3px; }
-        .xeno-box h2 span { color: var(--accent); }
-        .status-pill { color: #555; font-size: 11px; letter-spacing: 3px; font-weight: 700; margin: 10px 0 35px 0; text-transform: uppercase; }
+        .glass-card:hover { transform: translateY(-15px); border-color: rgba(0, 255, 150, 0.3); }
 
-        .btn-primary {
-            background: var(--accent); color: black; padding: 16px 45px; border-radius: 12px;
-            font-weight: 800; text-decoration: none; font-size: 17px; transition: 0.3s;
-            display: inline-block; box-shadow: 0 10px 30px rgba(0, 255, 150, 0.2);
+        .dl-btn-ultimate {
+            background: var(--primary); color: #000;
+            padding: 22px 60px; border-radius: 18px; font-weight: 800;
+            font-size: 20px; text-decoration: none; display: inline-block;
+            box-shadow: 0 0 40px var(--primary-glow);
+            transition: 0.4s; margin-top: 30px;
         }
-        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(0, 255, 150, 0.4); }
+        .dl-btn-ultimate:hover { transform: scale(1.05); box-shadow: 0 0 60px var(--primary); }
 
-        /* About / Help / Info */
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; width: 100%; margin-top: 50px; }
-        .info-card { background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.03); }
-        .info-card h3 { font-size: 28px; margin-bottom: 20px; color: var(--accent); }
-        .info-card p { color: var(--text-gray); line-height: 1.7; font-size: 15px; }
+        /* --- INFO SECTIONS --- */
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; margin-top: 50px; }
+        .feature-card {
+            background: var(--card); border: 1px solid var(--border);
+            padding: 40px; border-radius: 25px; transition: 0.3s;
+        }
+        .feature-card:hover { background: rgba(255,255,255,0.02); }
+        .feature-card h3 { color: var(--primary); margin-bottom: 15px; font-size: 24px; }
+        .feature-card p { color: #888; line-height: 1.7; }
 
-        /* Status Dot */
-        .status-online { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 30px; font-size: 11px; color: #444; }
-        .dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); animation: blink 1.5s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        /* --- STATUS FOOTER --- */
+        .status-bar {
+            margin-top: 40px; display: flex; align-items: center; gap: 15px;
+            background: rgba(255,255,255,0.03); padding: 10px 25px; border-radius: 100px;
+            font-size: 12px; font-weight: 700; color: #555; border: 1px solid var(--border);
+        }
+        .online-indicator { width: 10px; height: 10px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 15px var(--primary); animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.4; } 100% { transform: scale(1); opacity: 1; } }
 
     </style>
 </head>
 <body>
 
-    <div class="background-grid"></div>
+    <div class="bg-wrapper">
+        <div class="blob"></div>
+        <div class="grid"></div>
+    </div>
 
     <header>
-        <a href="#home" class="logo">Zeynox</a>
+        <a href="#home" class="logo">ZEY<span>NOX</span></a>
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -99,59 +134,56 @@
                 <li><a href="#download">Download</a></li>
             </ul>
         </nav>
-        <a href="#" class="discord-btn">Join Discord</a>
+        <a href="#" class="btn-discord">Join Community</a>
     </header>
 
-    <section id="home" class="hero">
-        <h1>Experience the Best Keyless Tool</h1>
-        <p>Zeynox provides lightning-fast execution, external script support, and a simple interface - all completely free and keyless.</p>
+    <section id="home">
+        <div class="hero-text">
+            <h1>Experience Power</h1>
+            <p>The industry standard for script execution. Fast, secure, and always keyless.</p>
+        </div>
         
-        <div class="xeno-box">
-            <h2>ZEY<span>NOX</span></h2>
-            <p class="status-pill">Execution has never been this smooth</p>
-            <a href="#download" class="btn-primary">DOWNLOAD EXECUTOR</a>
-            <div class="status-online">
-                <div class="dot"></div> V1.3.20 - STATUS: UNDETECTED
+        <div class="glass-card">
+            <h2 style="font-size: 60px; letter-spacing: -4px; margin-bottom: 5px;">ZEY<span>NOX</span></h2>
+            <p style="text-transform: uppercase; letter-spacing: 5px; color: #444; font-weight: 800; font-size: 12px;">Premium Execution Engine</p>
+            
+            <a href="#download" class="dl-btn-ultimate">DOWNLOAD NOW</a>
+            
+            <div class="status-bar" style="margin: 40px auto 0;">
+                <div class="online-indicator"></div>
+                V1.3.20 - SYSTEM STATUS: UNDETECTED
             </div>
         </div>
     </section>
 
     <section id="about">
-        <div class="info-grid">
-            <div class="info-card">
-                <h3>Lightning Fast</h3>
-                <p>Zeynox is optimized for speed. Our custom injection engine ensures that scripts load instantly without causing game lag or crashes.</p>
+        <div class="features">
+            <div class="feature-card">
+                <h3>Lightning Execution</h3>
+                <p>Equipped with a custom bytecode transpiler, Zeynox executes scripts at speeds you've never experienced before.</p>
             </div>
-            <div class="info-card">
-                <h3>Secure & Safe</h3>
-                <p>We prioritize your account's safety. Our tool is updated daily to bypass the latest anti-cheat systems, keeping your experience undetected.</p>
+            <div class="feature-card">
+                <h3>Anti-Detection</h3>
+                <p>Our kernel-level bypass ensures that you stay under the radar of even the most advanced anti-cheat systems.</p>
             </div>
-        </div>
-    </section>
-
-    <section id="help">
-        <h2 style="font-size: 45px; margin-bottom: 40px;">Frequently Asked Questions</h2>
-        <div class="info-card" style="width: 100%; max-width: 800px;">
-            <p style="color: white; font-weight: 700; margin-bottom: 10px;">Is Zeynox really free?</p>
-            <p style="margin-bottom: 25px;">Yes, Zeynox is 100% free to use. We don't require keys or hidden subscriptions.</p>
-            
-            <p style="color: white; font-weight: 700; margin-bottom: 10px;">Why is my antivirus flagging it?</p>
-            <p>Executors are often flagged as "False Positives" due to the way they interact with game memory. Simply whitelist the folder and you're good to go.</p>
+            <div class="feature-card">
+                <h3>Global Support</h3>
+                <p>Join thousands of users worldwide and access a massive library of community-made scripts instantly.</p>
+            </div>
         </div>
     </section>
 
     <section id="executor">
-        <h2 style="font-size: 45px; margin-bottom: 20px;">External Execution</h2>
-        <p style="color: var(--text-gray); margin-bottom: 40px;">A sleek, modern UI designed for power users.</p>
-        <div style="width: 100%; max-width: 900px; height: 450px; background: #050505; border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #111; font-size: 40px;">
-            INTERFACE PREVIEW
+        <h2 style="font-size: 50px; margin-bottom: 30px;">Refined Interface</h2>
+        <div class="glass-card" style="width: 100%; height: 500px; display: flex; align-items: center; justify-content: center;">
+            <p style="font-size: 40px; font-weight: 900; color: #111; letter-spacing: 10px;">UI PREVIEW</p>
         </div>
     </section>
 
-    <section id="download">
-        <h2 style="font-size: 45px; margin-bottom: 20px;">Get Started Today</h2>
-        <p style="color: var(--text-gray); margin-bottom: 40px;">Download Zeynox and elevate your gaming experience.</p>
-        <a href="#" class="btn-primary" style="background: white; color: black; padding: 20px 60px; font-size: 20px;">DOWNLOAD V1.3.20</a>
+    <section id="download" style="background: linear-gradient(to top, #0a1a12, transparent);">
+        <h2 style="font-size: 60px; margin-bottom: 20px;">Get Zeynox</h2>
+        <p style="color: #666; margin-bottom: 40px;">No keys. No ads. Just pure power.</p>
+        <a href="#" class="dl-btn-ultimate" style="background: #fff; color: #000; box-shadow: 0 0 30px rgba(255,255,255,0.2);">DOWNLOAD V1.3.20</a>
     </section>
 
 </body>
