@@ -18,13 +18,11 @@
 
         body { background-color: var(--bg); color: #fff; overflow-x: hidden; }
 
-        /* --- ARKA PLAN GELİŞTİRMELERİ --- */
         .bg-wrapper {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background: radial-gradient(circle at 50% 50%, #0a1a12 0%, #030303 100%);
         }
 
-        /* Hareketli Neon Dalgaları */
         .blob {
             position: absolute; width: 500px; height: 500px;
             background: var(--primary); filter: blur(180px);
@@ -36,18 +34,13 @@
             to { transform: translate(20%, 20%); }
         }
 
-        /* Gelişmiş Izgara Sistemi */
         .grid {
             position: absolute; inset: 0;
             background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: 60px 60px; 
-
-[Image of geometric grid pattern]
-
+            background-size: 60px 60px;
             mask-image: radial-gradient(ellipse at center, black, transparent 80%);
         }
 
-        /* --- NAVIGASYON --- */
         header {
             position: fixed; top: 0; width: 100%; height: 85px;
             display: flex; align-items: center; justify-content: space-between;
@@ -70,7 +63,6 @@
         }
         .btn-discord:hover { background: var(--primary); transform: translateY(-2px); }
 
-        /* --- HERO & MAIN CARD --- */
         section { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 100px 10%; }
 
         .hero-text { text-align: center; margin-bottom: 60px; }
@@ -95,7 +87,6 @@
         }
         .dl-btn-ultimate:hover { transform: scale(1.05); box-shadow: 0 0 60px var(--primary); }
 
-        /* --- INFO SECTIONS --- */
         .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; margin-top: 50px; }
         .feature-card {
             background: var(--card); border: 1px solid var(--border);
@@ -105,7 +96,12 @@
         .feature-card h3 { color: var(--primary); margin-bottom: 15px; font-size: 24px; }
         .feature-card p { color: #888; line-height: 1.7; }
 
-        /* --- STATUS FOOTER --- */
+        /* Help Section Stilleri */
+        .help-container { width: 100%; max-width: 900px; text-align: left; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); padding: 25px; border-radius: 20px; margin-bottom: 15px; }
+        .faq-item h4 { color: var(--primary); margin-bottom: 10px; font-size: 18px; }
+        .faq-item p { color: #aaa; font-size: 15px; line-height: 1.6; }
+
         .status-bar {
             margin-top: 40px; display: flex; align-items: center; gap: 15px;
             background: rgba(255,255,255,0.03); padding: 10px 25px; border-radius: 100px;
@@ -169,6 +165,24 @@
             <div class="feature-card">
                 <h3>Global Support</h3>
                 <p>Join thousands of users worldwide and access a massive library of community-made scripts instantly.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="help">
+        <h2 style="font-size: 50px; margin-bottom: 40px; letter-spacing: -2px;">Support & FAQ</h2>
+        <div class="help-container">
+            <div class="faq-item">
+                <h4>How do I use Zeynox?</h4>
+                <p>Download the installer, run the application, and attach it to your game process. Then, simply paste your script and hit execute.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Is it really keyless?</h4>
+                <p>Yes. Zeynox is 100% keyless. We don't use any linkvertise or third-party key systems. Just download and play.</p>
+            </div>
+            <div class="faq-item">
+                <h4>My antivirus flags it as a virus?</h4>
+                <p>This is a "False Positive". Since executors inject code into other processes, antiviruses flag them. Disable your real-time protection before downloading.</p>
             </div>
         </div>
     </section>
